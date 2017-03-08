@@ -1,4 +1,6 @@
-(function uiapp() {
+(function dataModule() {
+
+  window.uiapp = window.uiapp || {};
 
   function blurEvent(eventObj) {
     if (eventObj.target.value.length === 0) {
@@ -37,6 +39,21 @@
   }
 
   countChecks(document.querySelectorAll('.checkbox-inline'));
+
+  document.querySelector('form').addEventListener('submit', function submitJobApp(eventObj){
+      eventObj.preventDefault();
+
+      window.uiapp.submitJobApp({
+        Name: document.querySelector('#full-name').value,
+        Experience: document.querySelector('#exp').value,
+        Language: document.querySelector('#languages-js').value,
+        Language2: document.querySelector('#languages-html').value,
+        Language3: document.querySelector('#languages-css').value,
+        Work: document.querySelector('#work-url').value
+      });
+
+  });
+
 
 
 })(); // executing my IIFE (called uiapp)
