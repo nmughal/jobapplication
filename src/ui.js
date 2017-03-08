@@ -8,11 +8,6 @@
   document.querySelector('#full-name').addEventListener('blur', blurEvent);
 
 
-// When the range input ("experience") is changed, update the text in the figure
-// with the correct value from the input. So if I slide the dot to the right 1 step
-// the figure should read "6 years".
-
-
   function changeEvent(eventObj) {
     console.log(eventObj.target.value);
     console.log(eventObj.target.parentNode.childNodes);
@@ -20,6 +15,28 @@
   }
   document.querySelector('#exp').addEventListener('change', changeEvent);
 
+
+  function clickEvent(eventObj) {
+    console.log();
+    document.querySelector('#checkbox-inline-figure').innerText = countChecks(checkBoxArray) + ' languages';
+  }
+  let checkBoxArray = document.querySelectorAll('.checkbox-inline');
+    document.querySelectorAll('.checkbox-inline').forEach(function chooseCheckbox(checkBox){
+    checkBox.addEventListener('click', clickEvent);
+
+  });
+  //this function counts the checks in the array it's given//
+  function countChecks(checkBoxArray) {
+    let checkBoxCount = 0;
+    checkBoxArray.forEach(function checkCount(each) {
+      if (each.childNodes[1].checked ) {
+        checkBoxCount++;
+      }
+    });
+    return checkBoxCount;
+  }
+
+  countChecks(document.querySelectorAll('.checkbox-inline'));
 
 
 })(); // executing my IIFE (called uiapp)
