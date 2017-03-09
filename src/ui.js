@@ -52,8 +52,11 @@
         Work: document.querySelector('#work-url').value
       });
 
+      document.querySelector('form').innerText = "Your application has been received";
+      document.querySelector('form').style.display = block;
+
   });
 
 
 
-})(); // executing my IIFE (called uiapp)
+})(); // executing my IIFE
